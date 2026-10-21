@@ -169,7 +169,7 @@ export function BotNav() {
   );
 }
 
-/** The robot from the first version of the site, with a blink. */
+/** The robot from the first version of the site, with a blink. White on dark, black on light. */
 function Bot() {
   return (
     <svg viewBox="0 0 100 100" fill="none" className="h-full w-full drop-shadow-[0_8px_12px_rgb(var(--glow)/0.35)]">
@@ -177,20 +177,20 @@ function Bot() {
       <path d="M 75 50 C 85 50, 85 75, 75 80" stroke="var(--bot-arm)" strokeWidth="8" strokeLinecap="round" />
       <path d="M 35 50 C 35 90, 65 90, 65 50 Z" fill="url(#bot-body)" stroke="var(--bot-outline)" strokeWidth="1.5" />
       <rect x="25" y="15" width="50" height="35" rx="15" fill="url(#bot-head)" stroke="var(--bot-outline)" strokeWidth="1.5" />
-      <rect x="30" y="20" width="40" height="25" rx="8" fill="#0F172A" />
+      <rect x="30" y="20" width="40" height="25" rx="8" fill="var(--bot-screen)" />
       <g className="bot-eyes">
-        <path d="M 38 32 Q 42 28 46 32" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" />
-        <path d="M 54 32 Q 58 28 62 32" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" />
+        <path d="M 38 32 Q 42 28 46 32" stroke="var(--bot-eye)" strokeWidth="3" strokeLinecap="round" />
+        <path d="M 54 32 Q 58 28 62 32" stroke="var(--bot-eye)" strokeWidth="3" strokeLinecap="round" />
       </g>
-      <path d="M 45 40 Q 50 44 55 40" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M 45 40 Q 50 44 55 40" stroke="var(--bot-eye)" strokeWidth="2.5" strokeLinecap="round" />
       <defs>
         <linearGradient id="bot-head" x1="25" y1="15" x2="75" y2="50" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#FFFFFF" />
-          <stop offset="1" stopColor="#CBD5E1" />
+          <stop style={{ stopColor: "var(--bot-head-from)" }} />
+          <stop offset="1" style={{ stopColor: "var(--bot-head-to)" }} />
         </linearGradient>
         <linearGradient id="bot-body" x1="35" y1="50" x2="65" y2="90" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#F8FAFC" />
-          <stop offset="1" stopColor="#94A3B8" />
+          <stop style={{ stopColor: "var(--bot-body-from)" }} />
+          <stop offset="1" style={{ stopColor: "var(--bot-body-to)" }} />
         </linearGradient>
       </defs>
     </svg>
