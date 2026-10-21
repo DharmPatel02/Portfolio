@@ -1,4 +1,4 @@
-import { ArrowUpRight, Award, BookOpen, Brain, Cloud, Code2, Database, FileText, GraduationCap, Layout, Mail, Server, UserRound } from "lucide-react";
+import { ArrowUpRight, Award, BookOpen, Brain, Cloud, Code2, Database, FileText, GraduationCap, Layout, Mail, Server, SquareTerminal, UserRound } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import { container, SideHeading, SplitHeading } from "@/components/headings";
@@ -235,6 +235,15 @@ export default function Home() {
               <Code2 className="h-4 w-4" aria-hidden="true" />
               GitHub
             </a>
+            <a
+              href={profile.leetcode}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 hover:border-accent hover:text-accent-ink"
+            >
+              <SquareTerminal className="h-4 w-4" aria-hidden="true" />
+              LeetCode
+            </a>
             {profile.resume && (
               <a href={profile.resume} className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 hover:border-accent hover:text-accent-ink">
                 <FileText className="h-4 w-4" aria-hidden="true" />
@@ -247,7 +256,7 @@ export default function Home() {
 
         <footer className="mt-24 flex flex-col items-center justify-between gap-4 border-t border-line-soft pt-8 text-sm text-muted md:flex-row">
           <p>© 2026 Dharm Patel. Built with Next.js and Three.js.</p>
-          <p className="flex gap-5">
+          <p className="flex flex-wrap justify-center gap-x-5 gap-y-2">
             <a href={`mailto:${profile.email}`} className="hover:text-accent-ink">
               Email
             </a>
@@ -256,6 +265,9 @@ export default function Home() {
             </a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-accent-ink">
               LinkedIn
+            </a>
+            <a href={profile.leetcode} target="_blank" rel="noreferrer" className="hover:text-accent-ink">
+              LeetCode
             </a>
             <a href="#home" className="hover:text-accent-ink">
               Back to top

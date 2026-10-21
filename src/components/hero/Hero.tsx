@@ -1,4 +1,4 @@
-import { Brain, Code2, FileText, Mail, Server, UserRound } from "lucide-react";
+import { Brain, Code2, FileText, Mail, Server, SquareTerminal, UserRound } from "lucide-react";
 import { container } from "@/components/headings";
 import { focus, profile } from "@/content/profile";
 
@@ -51,6 +51,10 @@ export function Hero() {
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-accent-ink">
               <UserRound className="h-4 w-4" aria-hidden="true" />
               LinkedIn
+            </a>
+            <a href={profile.leetcode} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-accent-ink">
+              <SquareTerminal className="h-4 w-4" aria-hidden="true" />
+              LeetCode
             </a>
           </div>
         </div>

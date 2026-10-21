@@ -10,6 +10,7 @@ export const profile = {
   email: "dharmpatel0002@gmail.com",
   linkedin: "https://www.linkedin.com/in/dharmpatel02",
   github: "https://github.com/DharmPatel02",
+  leetcode: "https://leetcode.com/u/dharmpatel/",
   /** Set to "/resume.pdf" once public/resume.pdf exists. */
   resume: null as string | null,
 };
