@@ -1,0 +1,340 @@
+@import "tailwindcss";
+
+/* Aurora palette, two themes. Dark: deep ink with teal, violet, and sky light.
+   Light: cool paper with the same hues deepened wherever they carry text.
+   accent (teal)    = calls to action, the active nav item, engineering
+   accent-2 (violet) = machine learning
+   accent-3 (sky)    = the third stop in gradients and the live background
+   signal / ember    = my method vs a negative result in charts; bot vs fire
+   Chart pair signal + ember validated with the dataviz palette checker in both
+   themes against the card surface: CVD and contrast pass. All text colours
+   reach 4.5:1 or better on their background. */
+:root {
+  --deck: #070b10;
+  --raised: #0d131b;
+  --hull: #eaf2f0;
+  --muted: #9ba8b0;
+  --plate: #1e2a35;
+  --accent: #2dd4bf;
+  --accent-ink: #5eead4;
+  --on-accent: #042f2b;
+  --accent-2: #a78bfa;
+  --accent-3: #38bdf8;
+  --glow: 45 212 191;
+  --signal: #1fa595;
+  --signal-ink: #5eead4;
+  --ember: #e8573c;
+  --ember-ink: #f38a72;
+  --amber: #f4a259;
+  --wall: #2b3d4c;
+  --floor: #101920;
+  --line-soft: rgb(255 255 255 / 0.05);
+  --line: rgb(255 255 255 / 0.09);
+  --line-strong: rgb(255 255 255 / 0.15);
+  --tint: rgb(255 255 255 / 0.03);
+  --tint-strong: rgb(255 255 255 / 0.05);
+  --glass: rgb(255 255 255 / 0.025);
+  --glass-hover: rgb(255 255 255 / 0.04);
+  --nav-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.8);
+  --bot-outline: transparent;
+  --bot-arm: #e2e8f0;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --deck: #f4f7f7;
+  --raised: #ffffff;
+  --hull: #0e1a21;
+  --muted: #52626b;
+  --plate: #d5dfe2;
+  --accent: #14b8a6;
+  --accent-ink: #0f766e;
+  --on-accent: #042f2b;
+  --accent-2: #6d28d9;
+  --accent-3: #0369a1;
+  --glow: 20 184 166;
+  --signal: #0f8f80;
+  --signal-ink: #0f766e;
+  --ember: #c8402a;
+  --ember-ink: #b23a22;
+  --amber: #e8892b;
+  --wall: #93a9b5;
+  --floor: #e3ebee;
+  --line-soft: rgb(14 26 33 / 0.06);
+  --line: rgb(14 26 33 / 0.1);
+  --line-strong: rgb(14 26 33 / 0.18);
+  --tint: rgb(14 26 33 / 0.03);
+  --tint-strong: rgb(14 26 33 / 0.05);
+  --glass: rgb(255 255 255 / 0.6);
+  --glass-hover: rgb(255 255 255 / 0.85);
+  --nav-shadow: 0 18px 40px -16px rgb(14 26 33 / 0.25);
+  --bot-outline: #b5c3ca;
+  --bot-arm: #b5c3ca;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-deck: var(--deck);
+  --color-raised: var(--raised);
+  --color-hull: var(--hull);
+  --color-muted: var(--muted);
+  --color-plate: var(--plate);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent: var(--on-accent);
+  --color-line-soft: var(--line-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-tint: var(--tint);
+  --color-tint-strong: var(--tint-strong);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-ember: var(--ember);
+  --color-ember-ink: var(--ember-ink);
+  --color-amber: var(--amber);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
+/* Base rules sit in a layer so Tailwind utilities (also layered) win over them. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background: var(--deck);
+    color: var(--hull);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  /* Serif italic display type, as on the first version of the site. */
+  .type-display {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+
+  .type-heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .link {
+    color: var(--signal-ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .link:hover {
+    color: var(--accent-ink);
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(90deg, var(--accent-ink), var(--accent-3), var(--accent-2), var(--accent-ink));
+    background-size: 300% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    /* Italic overhang would clip without a little room. */
+    padding-right: 0.08em;
+    animation: gradient-x 14s ease-in-out infinite;
+  }
+
+  .glass-card {
+    background: var(--glass);
+    border: 1px solid var(--line);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transition: border-color 0.4s, background-color 0.4s, box-shadow 0.4s;
+  }
+
+  .glass-card:hover {
+    background: var(--glass-hover);
+    border-color: rgb(var(--glow) / 0.35);
+    box-shadow: 0 0 50px -12px rgb(var(--glow) / 0.22);
+  }
+
+  /* Tilt cards: eased return, snappy follow, amber glow at the pointer. */
+  .tilt-card {
+    position: relative;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s, background-color 0.4s, box-shadow 0.4s;
+  }
+
+  .tilt-card[data-tilting] {
+    transition: transform 0.08s linear, border-color 0.4s, background-color 0.4s, box-shadow 0.4s;
+  }
+
+  .tilt-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(600px circle at var(--gx, 50%) var(--gy, 50%), rgb(var(--glow) / 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .tilt-card[data-tilting]::after {
+    opacity: 1;
+  }
+
+  .nav-shadow {
+    box-shadow: var(--nav-shadow);
+  }
+
+  /* Smooth colour change when the theme flips (skipped under reduced motion). */
+  .theme-fade,
+  .theme-fade * {
+    transition: background-color 0.35s, border-color 0.35s, color 0.35s !important;
+  }
+
+  /* Bot nav. Pill and bot share one transition so they always travel together. */
+  .bot-nav-travel {
+    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1), width 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .bot-nav:not([data-ready]) .bot-nav-travel {
+    transition: none;
+  }
+
+  /* Lift and lean into the direction of travel, then settle. */
+  .bot-lean {
+    transform-origin: 50% 100%;
+    transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1);
+  }
+
+  .bot-nav[data-moving] .bot-lean {
+    transform: translateY(-9px) rotate(calc(var(--dir, 1) * 14deg));
+  }
+
+  /* Idle wiggle on whichever item is active. */
+  .bot-wiggle {
+    transform-origin: 50% 90%;
+    animation: bot-wiggle 2.2s ease-in-out infinite;
+  }
+
+  .bot-eyes {
+    transform-origin: 50% 32%;
+    animation: bot-blink 4.5s ease-in-out infinite;
+  }
+
+  .timeline-pulse {
+    animation: timeline-pulse 3s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-gradient,
+    .bot-wiggle,
+    .bot-eyes,
+    .timeline-pulse {
+      animation: none;
+    }
+
+    .bot-nav-travel,
+    .bot-lean,
+    .tilt-card {
+      transition: none;
+    }
+  }
+}
+
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes bot-wiggle {
+  0%,
+  100% {
+    transform: translate(-3px, 0) rotate(-9deg);
+  }
+  50% {
+    transform: translate(3px, -4px) rotate(9deg);
+  }
+}
+
+@keyframes bot-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes timeline-pulse {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  to {
+    top: calc(100% - 2rem);
+    opacity: 0;
+  }
+}
